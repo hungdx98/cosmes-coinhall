@@ -1,8 +1,8 @@
 import { defineConfig } from "vite";
 import solidPlugin from "vite-plugin-solid";
+import ts from "@rollup/plugin-typescript"
 
 export default defineConfig({
-  plugins: [solidPlugin()],
   define: {
     global: "window",
   },
@@ -17,4 +17,6 @@ export default defineConfig({
       ]
     }
   },
+  //@ts-ignore
+  plugins: [{ ...ts(), ...solidPlugin(), apply: 'build' }]
 });
