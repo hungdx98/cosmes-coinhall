@@ -1,11 +1,10 @@
 import { builtinModules } from 'module';
 import path from 'path';
 import { defineConfig } from "vite";
-import tsconfigPaths from 'vite-tsconfig-paths';
+import solidPlugin from "vite-plugin-solid";
 
 export default defineConfig({
-  //@ts-ignore
-  plugins: [tsconfigPaths()],
+  plugins: [solidPlugin()],
   define: {
     global: "window",
   },
