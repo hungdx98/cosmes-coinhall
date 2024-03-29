@@ -1,10 +1,11 @@
+import { builtinModules } from 'module';
+import path from 'path';
 import { defineConfig } from "vite";
-import solidPlugin from "vite-plugin-solid";
-import ts from "@rollup/plugin-typescript";
-import pkg from '../../package.json';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
-  plugins: [solidPlugin()],
+  //@ts-ignore
+  plugins: [tsconfigPaths()],
   define: {
     global: "window",
   },
@@ -12,10 +13,14 @@ export default defineConfig({
     port: 3000,
   },
   build: {
+    lib: {
+      entry: path.resolve(__dirname, 'index.ts'),
+      formats: ['es'],
+      fileName: () => 'out.js',
+    },
     target: "esnext",
     rollupOptions: {
-      external: [...Object.keys(pkg.dependencies), /^node:/]
-    }
+      external: [...builtinModules, ...builtinModules.map((m) => `node:${m}`)],
+    },
   }
 });
-// [...Object.keys(pkg.dependencies), ...Object.keys(pkg.peerDependencies), ...Object.keys(pkg.devDependencies), 'fs', 'path']
