@@ -14,7 +14,7 @@ export default defineConfig({
   build: {
     target: "esnext",
     rollupOptions: {
-      external: Object.keys(pkg.devDependencies)
+      external: {...Object.keys(pkg.devDependencies), ...Object.keys(pkg.peerDependencies), ...Object.keys(pkg.dependencies)}
     }
   }
 });
