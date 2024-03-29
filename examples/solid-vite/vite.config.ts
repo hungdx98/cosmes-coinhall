@@ -11,9 +11,8 @@ export default defineConfig({
     port: 3000,
   },
   build: {
-    target: "esnext",
     rollupOptions: {
-      external: [...builtinModules, ...builtinModules.map((m) => `node:${m}`)],
+      external: ['@bufbuild/protobuf', '@scure/base'],
     },
   }
 });
