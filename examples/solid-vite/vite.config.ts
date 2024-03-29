@@ -12,7 +12,7 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
-      external: ['@bufbuild/protobuf', '@scure/base', '@walletconnect/sign-client'],
+      external: ['@bufbuild/protobuf', '@scure/base', '@walletconnect/sign-client', '@walletconnect/legacy-client', '@scure/bip39', 'lodash-es', '@scure/bip32', ],
     },
   }
 });
