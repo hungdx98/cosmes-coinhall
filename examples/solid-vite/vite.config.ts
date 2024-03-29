@@ -12,7 +12,7 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
-      external: ['@bufbuild/protobuf', '@scure/base'],
+      external: ['@bufbuild/protobuf', '@scure/base', '@walletconnect/sign-client'],
     },
   }
 });
