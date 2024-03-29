@@ -1,5 +1,4 @@
 import { builtinModules } from 'module';
-import path from 'path';
 import { defineConfig } from "vite";
 import solidPlugin from "vite-plugin-solid";
 
@@ -12,11 +11,6 @@ export default defineConfig({
     port: 3000,
   },
   build: {
-    lib: {
-      entry: path.resolve(__dirname, 'index.tsx'),
-      formats: ['es'],
-      fileName: () => 'out.js',
-    },
     target: "esnext",
     rollupOptions: {
       external: [...builtinModules, ...builtinModules.map((m) => `node:${m}`)],
