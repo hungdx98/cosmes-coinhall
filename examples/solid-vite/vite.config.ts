@@ -1,8 +1,10 @@
 import { defineConfig } from "vite";
 import solidPlugin from "vite-plugin-solid";
-import ts from "@rollup/plugin-typescript"
+import ts from "@rollup/plugin-typescript";
+import pkg from '../../package.json';
 
 export default defineConfig({
+  plugins: [solidPlugin()],
   define: {
     global: "window",
   },
@@ -12,11 +14,7 @@ export default defineConfig({
   build: {
     target: "esnext",
     rollupOptions: {
-      external: [
-        /^node:.*/,
-      ]
+      external: Object.keys(pkg.dependencies)
     }
-  },
-  //@ts-ignore
-  plugins: [{ ...ts(), ...solidPlugin(), apply: 'build' }]
+  }
 });
