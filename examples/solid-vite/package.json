@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@bufbuild/protobuf": "^1.8.0",
+    "@scure/base": "^1.1.6",
     "buffer": "^6.0.3",
     "cosmes": "link:../..",
     "solid-js": "^1.7.3"
